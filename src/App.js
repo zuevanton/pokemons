@@ -1,8 +1,10 @@
 import pokemonsData from './api/loadPokemons';
 import PokemonCounter from './components/PokemonCounter';
 import PokemonList from './components/PokemonList';
+import NavigateButtons from './components/navigateButtons';
 import './App.css';
 import { useState, useCallback, useEffect } from 'react';
+import PageSizeSelect from './components/PageSizeSelect';
 
 // const data1 = data.slice(0, 4);
 
@@ -12,20 +14,19 @@ function App() {
   const [pokemons, setPokemons] = useState([]);
   const [caughtedPokemons, setCaughtedPokemons] = useState([])
   const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(5)
 
   
   useEffect(() => {
-    pokemonsData(page, 5).then(result => setPokemons(result))
-  }, [page]);
+    pokemonsData(page, pageSize).then(result => setPokemons(result))
+  }, [page, pageSize]);
 
   const loadPrevPokemons = () => {
     setPage(prev => prev - 1)
-    // loadPokemons(page)
   }
 
   const loadNextPokemons = () => {
     setPage(prev => prev + 1)
-    // loadPokemons(page)
   }
 
   const onPokemonChangeStatus = useCallback( async id => {
@@ -39,19 +40,16 @@ function App() {
     })
   }, []);
 
-  // const onPokemonChangeStatusCached = useCallback(onPokemonChangeStatus, []);
 
   return (
     <div className="App">
       <h1>страница {page}</h1>
       <PokemonCounter caughted={caughtedPokemons.length} total={pokemons.length} />
       <PokemonList pokemons={pokemons} onPokemonChangeStatus={onPokemonChangeStatus} caughted={caughtedPokemons} />
-      <button onClick={loadPrevPokemons}>назад</button>
-      <button onClick={loadNextPokemons}>вперед</button>
+      <NavigateButtons prev={loadPrevPokemons} next={loadNextPokemons} />
+      <PageSizeSelect pageSize={pageSize} onChange={value => setPageSize(value)} />
     </div>
   );
 }
 
 export default App;
-
-// сделать селект с выбором кол-ва покемонов на странице. пн в 20:30
