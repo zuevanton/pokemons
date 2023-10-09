@@ -1,38 +1,52 @@
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+}
 .App {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 50px 0 50px 0;
+  position: relative;
+}
+
+h2, h3 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pokemons-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pokemon-item {
+  max-width: 240px;
+  height: 240px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #aa2519;
+  border-radius: 50%;
+  margin-bottom: 35px;
 }
 
-.App-link {
-  color: #61dafb;
+.pokemon-item h4 {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 35px;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pokemon-item button {
+  background-color: #f4de4a;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 5px 15px;
+}
+
+.caughted {
+  background-color: #449830;
 }
