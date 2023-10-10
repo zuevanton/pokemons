@@ -1,7 +1,6 @@
 import Pokemon from "./Pokemon"
 
 const PokemonList = ({pokemons, onPokemonChangeStatus, caughted}) => {
-  console.log("🎨 PokemonList")
   
   return (
     <div className="pokemons-list">

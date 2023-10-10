@@ -1,5 +1,4 @@
 const PokemonCounter = ({caughted, total}) => {
-  console.log("🎨 PokemonCounter")
 
   return (
     <>

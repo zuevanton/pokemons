@@ -2,7 +2,6 @@ import {memo} from "react";
 
 const Pokemon = ({pokemon, onPokemonChangeStatus, status}) => {
   const {name, id} = pokemon;
-  console.log("🎨 Pokemon", name)
 
   const src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
   const className = `pokemon-item ${status ? 'caughted' : ''}`

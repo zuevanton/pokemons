@@ -6,15 +6,11 @@ import './App.css';
 import { useState, useCallback, useEffect } from 'react';
 import PageSizeSelect from './components/PageSizeSelect';
 
-// const data1 = data.slice(0, 4);
-
 function App() {
-  console.log("🎨 App")
-
   const [pokemons, setPokemons] = useState([]);
   const [caughtedPokemons, setCaughtedPokemons] = useState([])
   const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(5)
+  const [pageSize, setPageSize] = useState(3)
 
   
   useEffect(() => {
@@ -30,7 +26,6 @@ function App() {
   }
 
   const onPokemonChangeStatus = useCallback( async id => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
     setCaughtedPokemons(prevCaughted => {
       if(prevCaughted.includes(id)) {
         return prevCaughted.filter(caughtedId => caughtedId !== id)

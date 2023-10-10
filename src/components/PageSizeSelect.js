@@ -1,17 +1,9 @@
+const sizeOptions = [3, 6, 12, 24];
+
 const PageSizeSelect = ({pageSize, onChange}) => {
   return (
     <select name="pageSize" value={pageSize} onChange={e => onChange(e.target.value)}>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
+      {sizeOptions.map(item => <option key={item} value={item}>{item}</option>)}
     </select>
   )
 }
