@@ -1,13 +1,17 @@
 import {memo} from "react";
+import { useDispatch, useSelector } from 'react-redux';
 
-const Pokemon = ({pokemon, onPokemonChangeStatus, status}) => {
+const Pokemon = ({ pokemon }) => {
   const {name, id} = pokemon;
+
+  const dispatch = useDispatch()
+  const status = useSelector(state => state.caughtedPokemons.includes(id))
 
   const src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
   const className = `pokemon-item ${status ? 'caughted' : ''}`
 
   const onButtonClick = (id) => {
-    onPokemonChangeStatus(id)
+    dispatch({type: 'CHANGE_STATUS', id})
   }
 
   return (
